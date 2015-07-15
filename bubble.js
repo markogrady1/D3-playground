@@ -2,16 +2,18 @@
 
 
 var setBubbles = function(data) {
-      console.log(data)
-//var data = [{'user':'mark', 'closed':30},{'user':'bob', 'closed':4},{'user':'sam', 'closed':5},{'user':'kee', 'closed':12},{'user':'every', 'closed':24},{'user':'poo', 'closed':3},{'user':'pan', 'closed':13}];
-//var data = [{'user':3},{'user':4},{'user':5},{'user':12},{'user':24},{'user':2},{'user':13}];
+
 var svg = d3.select('body').append('svg')
 			.attr('width', 1000)
 			.attr('height', 1000)
 var ordinalColorScale = d3.scale.category20();
 var circles = svg.selectAll('circle')
-			.data(data.sort(function(a,b) { return +a.closed - +b.closed; }),
-    		function(d) { return d.closed; })
+			.data(data.sort(function(a,b) { //sort data values
+                        return +a.closed - +b.closed; 
+                  }),
+    		      function(d) { 
+                        return d.closed; 
+                  })
 			.enter()
 			.append('circle')
 			.attr('opacity', 0.8)
